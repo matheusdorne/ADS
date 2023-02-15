@@ -1,0 +1,84 @@
+* { 
+	margin: 0; 
+	padding: 0;
+}
+body{ 
+	font-family: Arial, serif, sans-serif; 
+	 background-image: url(https://wallpaper.dog/large/5517598.jpg);
+	 background-size:contain;   
+	 max-width: 2570; 
+	 max-height: 100px;
+
+	}
+
+.tela-login{ 
+	background-color: rgba(0, 0, 0, 0.9);   
+	margin-top: 15%; 
+	margin-left: 50%; 
+	transform: translate(-50%,-15%);
+	padding: 80px; 
+	border-radius: 15px; 
+	color: white;  
+	font-size: 15px;  
+	text-align: center; 
+	margin-top: 10%; 
+	
+}  
+
+header { 
+	background-color: white;
+}
+
+h1 { 
+	margin-bottom: 20px;
+}
+
+
+input{ 
+	padding: 10px;  
+	border: solid;   
+	font-size: 15px 
+
+}
+
+.btnLogar{   
+	background-color: grey;  
+	border: 2px solid black;  
+	width: 40px;  
+	border-radius:10px;  
+	padding: 15px;
+	color: whitesmoke;  
+	font-size: 12px;   
+
+} 
+
+.btnLogar:hover{ 
+	background-color: grey;  
+
+} 
+  
+
+
+form a { 
+	margin-top: 50px; ;
+	color: white;
+
+}  
+
+
+.forgetPW, .signup { 
+	margin-top: 20px;
+} 
+
+.logincontainer { 
+	list-style: none; 
+	
+} 
+
+.logincontainer li { 
+	margin-bottom: 20px;
+} 
+
+#div_head { 
+	background-color: white;
+}
