@@ -56,8 +56,8 @@ adiciona_matricula()
 - Para opção 2 do menu faça a chamada afunção
 imprimir_dados().
 """
-lista_nomes = []
-lista_matriculas = []
+lista_nomes = ["Matheus","Carlos"]
+lista_matriculas = ["12235435","4565436"]
 
 
 def semnumero(value):
@@ -88,4 +88,21 @@ def ler_matricula():
     return matricula
 
 
-ler_matricula()
+def adiciona_nome(value):
+    lista_nomes.append(value)
+
+
+def adiciona_matricula(value):
+    lista_matriculas.append(value)
+
+
+def imprime_dados():
+
+    contador = 0
+    for i in lista_nomes:
+        linha = ""
+        linha += i + (" " * (15 - len(i))) + lista_matriculas[contador]
+        contador += 1
+        print(linha)
+
+imprime_dados()
