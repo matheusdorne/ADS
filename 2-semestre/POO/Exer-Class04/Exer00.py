@@ -59,18 +59,6 @@ imprimir_dados().
 lista_nomes = []
 lista_matriculas = []
 
-teste1 ="1213132sadfsadfa"
-teste2 = "& -"
-
-
-
-def isalfanum(value):
-    for i in value:
-        if not i.isalpha() or not i.isdigit():
-            return False
-    return True
-
-
 
 def semnumero(value):
     for i in value:
@@ -93,12 +81,11 @@ def ler_nome():
 def ler_matricula():
     while True:
         matricula = input("Digite a matricula: ")
-        if isalfanum(matricula):
+        if matricula.isalnum():
             break
         else:
             print("Matricula pode conter apenas caracteres alfanúmericos.")
     return matricula
 
-print(isalfanum(teste1))
-print(isalfanum(teste2))
+
 ler_matricula()
