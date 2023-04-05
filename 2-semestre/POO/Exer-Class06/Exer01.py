@@ -14,13 +14,16 @@
 #   - crie uma função para mostrar todos os alunos da
 #       lista, com nome e matricula.
 
-class Aluno:
+class Aluno(object):
     def __init__(self, nome, matricula, data_nascimento):
         self.nome = nome
         self.matricula = matricula
-        self.data_nascimento = data_nascimento
-
-
-aluno = Aluno("Ivonei", 1111, "25/10/64")
+        self.data_nascimento = data_nascimento 
 
 # Classe gera vários objetos
+
+aluno = Aluno("Ivonei", 1111, "25/10/64")  
+# objeto aluno é apenas a referencia de memoria
+aluno2 = Aluno("Maria", 2222,"22/08/66")
+
+print(aluno.nome)
