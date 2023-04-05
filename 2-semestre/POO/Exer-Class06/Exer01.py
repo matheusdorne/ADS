@@ -15,8 +15,12 @@
 #       lista, com nome e matricula.
 
 class Aluno:
-    def __init__(self,nome,matricula,data_nascimento):
+    def __init__(self, nome, matricula, data_nascimento):
         self.nome = nome
         self.matricula = matricula
         self.data_nascimento = data_nascimento
-        
+
+
+aluno = Aluno("Ivonei", 1111, "25/10/64")
+
+# Classe gera vários objetos
