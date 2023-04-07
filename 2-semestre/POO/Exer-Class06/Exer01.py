@@ -12,7 +12,7 @@
 #       lista, retorne a mensagem "ALUNO NÃO MATRICULADO"
 #       > consulte pela matrícula ou nome
 #   - crie uma função para mostrar todos os alunos da
-#       lista, com nome e matricula.
+#       lista, com nome e matrícula.
 
 class Aluno(object):
     def __init__(self, nome, matricula, data_nascimento):
@@ -53,9 +53,9 @@ def imprimir_dados_lista():
     for aluno in lista_alunos:
         print(f"Nome: {aluno.get_nome()} Matricula: {aluno.matricula} Data de Nascimento: {aluno.data_nascimento}")
 
+# objeto aluno é apenas a referência de memória
 
 aluno = Aluno("Ivonei", 1111, "25/10/64")
-# objeto aluno é apenas a referencia de memoria
 aluno2 = Aluno("Maria", 2222, "22/08/66")
 aluno3 = Aluno("Carlos", 3333, "02/10/80")
 
