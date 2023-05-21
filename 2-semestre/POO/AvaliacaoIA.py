@@ -32,6 +32,7 @@ Estados
  'RR', 'SC', 'SP', 'SE', 'TO'
  '''
 
+
 class Relevancia:
     def __init__(self):
         self.__desemprego = None
@@ -39,25 +40,82 @@ class Relevancia:
         self.__seguranca = None
         self.__regulamentacao = None
         self.__potencial = None
-UF = ['AC', 'AL', 'AP', 'AM', 'BA', 'CE', 'DF', 'ES', 'GO', 'MA', 'MT', 'MS', 'MG', 'PA', 'PB', 'PR', 'PE', 'PI', 'RJ', 'RN', 'RS', 'RO',
- 'RR', 'SC', 'SP', 'SE', 'TO']
+
+    def avaliar(self, a, b, c, d, e):
+        self.__desemprego = a
+        self.__etica = b
+        self.__seguranca = c
+        self.__regulamentacao = d
+        self.__potencial = e
+
+    def __str__(self):
+        return f'Desemprego e Desigualdade: {self.__desemprego}' \
+               f'Questões Éticas e Morais: {self.__etica}' \
+               f'Segurança cibernética e privacidade: {self.__seguranca}' \
+               f'Controle e regulamentação: {self.__regulamentacao}' \
+               f'Potencial desenvolvimento de IA superinteligente: {self.__potencial}'
+
+
+UF = ['AC', 'AL', 'AP', 'AM', 'BA', 'CE', 'DF', 'ES', 'GO', 'MA', 'MT', 'MS', 'MG', 'PA', 'PB', 'PR', 'PE', 'PI', 'RJ',
+      'RN', 'RS', 'RO',
+      'RR', 'SC', 'SP', 'SE', 'TO']
+pesquisa = []
 
 def selecionaUF():
     while True:
         estado = input("Informe a sigla do seu estado (Ex: RS, CE, SP...): ")
         if estado in UF:
-            return  estado
+            return estado
         else:
             print("Digite uma UF válida!")
+
+
+def verificaNota(nota):
+    if 0 <= nota <= 5:
+        return True
+    else:
+        print("Digite um valor entre 1 a 5!")
+        return False
+
 
 def realizaAvaliacao():
     uf = selecionaUF()
     avaliacao = Relevancia()
+    topicos = ["Desemprego e Desigualdade","Questões Éticas e Morais",
+               "Segurança cibernética e privacidade","Controle e regulamentação",
+               "Potencial desenvolvimento de IA superinteligente"]
+
+    print("Avalie o nivel de preocupancia dos seguintes tópicos com notas de 1 a 5.")
+    while True:
+        a = input("Desemprego e Desigualdade: ")
+        if verificaNota(a):
+            break
+    while True:
+        b = input("Questões Éticas e Morais: ")
+        if verificaNota(b):
+            break
+    while True:
+        c = input("Segurança cibernética e privacidade: ")
+        if verificaNota(c):
+            break
+    while True:
+        d = input("Controle e regulamentação: ")
+        if verificaNota(d):
+            break
+    while True:
+        e = input("Potencial desenvolvimento de IA superinteligente: ")
+        if verificaNota(e):
+            break
+    avaliacao.avaliar(a,b,c,d,e)
+
+    if uf in pesquisa:
+        
 
 
 
 def relatorio():
     pass
+
 
 def menu():
     while True:
@@ -74,4 +132,3 @@ def menu():
             relatorio()
         else:
             print("Selecione uma opção valida!")
-
