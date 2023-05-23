@@ -59,7 +59,7 @@ class Relevancia:
 UF = ['AC', 'AL', 'AP', 'AM', 'BA', 'CE', 'DF', 'ES', 'GO', 'MA', 'MT', 'MS', 'MG', 'PA', 'PB', 'PR', 'PE', 'PI', 'RJ',
       'RN', 'RS', 'RO',
       'RR', 'SC', 'SP', 'SE', 'TO']
-pesquisa = []
+pesquisa = {}
 
 def selecionaUF():
     while True:
@@ -71,45 +71,59 @@ def selecionaUF():
 
 
 def verificaNota(nota):
-    if 0 <= nota <= 5:
-        return True
+    if isinstance(nota, int):
+        if 0 <= nota <= 5:
+            return True
+        else:
+            print("Digite um valor entre 1 a 5!")
+            return False
     else:
         print("Digite um valor entre 1 a 5!")
-        return False
+
+def converteParaInt(variavel):
+    try:
+        valor = int(variavel)
+        return valor, True
+    except ValueError:
+        print("Digite um valor entre 1 a 5!")
+        return  False
+
 
 
 def realizaAvaliacao():
     uf = selecionaUF()
     avaliacao = Relevancia()
-    topicos = ["Desemprego e Desigualdade","Questões Éticas e Morais",
-               "Segurança cibernética e privacidade","Controle e regulamentação",
-               "Potencial desenvolvimento de IA superinteligente"]
 
-    print("Avalie o nivel de preocupancia dos seguintes tópicos com notas de 1 a 5.")
+    print("\nAvalie o nivel de preocupancia dos seguintes tópicos com notas de 1 a 5.\n")
     while True:
-        a = input("Desemprego e Desigualdade: ")
-        if verificaNota(a):
+        a , i = converteParaInt(input("Desemprego e Desigualdade: "))
+        if verificaNota(a) and i:
             break
     while True:
-        b = input("Questões Éticas e Morais: ")
-        if verificaNota(b):
+        b, i = converteParaInt(input("Questões Éticas e Morais: "))
+        if verificaNota(b) and i:
             break
     while True:
-        c = input("Segurança cibernética e privacidade: ")
-        if verificaNota(c):
+        c, i = converteParaInt(input("Segurança cibernética e privacidade: "))
+        if verificaNota(c) and i:
             break
     while True:
-        d = input("Controle e regulamentação: ")
-        if verificaNota(d):
+        d, i = converteParaInt(input("Controle e regulamentação: "))
+        if verificaNota(d) and i:
             break
     while True:
-        e = input("Potencial desenvolvimento de IA superinteligente: ")
-        if verificaNota(e):
+        e, i = converteParaInt(input("Potencial desenvolvimento de IA superinteligente: "))
+        if verificaNota(e) and i:
             break
     avaliacao.avaliar(a,b,c,d,e)
 
     if uf in pesquisa:
-        
+        pesquisa[uf].append(avaliacao)
+    else:
+        pesquisa[uf] = []
+        pesquisa[uf].append(avaliacao)
+
+
 
 
 
@@ -119,16 +133,18 @@ def relatorio():
 
 def menu():
     while True:
-        escolha = input('''Menu
+        escolha = int(input('''Menu
     0- Finalizar o Programa
     1- Realizar avaliação
     2- Relatório
-    Escolha: ''')
+    Escolha: '''))
         if escolha == 0:
             exit()
         elif escolha == 1:
             realizaAvaliacao()
         elif escolha == 2:
+            print(pesquisa)
             relatorio()
         else:
             print("Selecione uma opção valida!")
+menu()
