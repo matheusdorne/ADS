@@ -48,6 +48,9 @@ class Relevancia:
         self.__regulamentacao = d
         self.__potencial = e
 
+    def retornaAvaliacao(self):
+        return self.__etica, self.__potencial, self.__seguranca, self.__regulamentacao, self.__potencial
+
     def __str__(self):
         return f'Desemprego e Desigualdade: {self.__desemprego}' \
                f'Questões Éticas e Morais: {self.__etica}' \
@@ -61,13 +64,14 @@ UF = ['AC', 'AL', 'AP', 'AM', 'BA', 'CE', 'DF', 'ES', 'GO', 'MA', 'MT', 'MS', 'M
       'RR', 'SC', 'SP', 'SE', 'TO']
 pesquisa = {}
 
+
 def selecionaUF():
     while True:
-        estado = input("Informe a sigla do seu estado (Ex: RS, CE, SP...): ")
-        if estado in UF:
+        estado =  input("\nInforme a sigla do seu estado (Ex: RS, CE, SP...): ")
+        if estado.upper() in UF:
             return estado
         else:
-            print("Digite uma UF válida!")
+            print("\nDigite uma UF válida!")
 
 
 def verificaNota(nota):
@@ -80,14 +84,14 @@ def verificaNota(nota):
     else:
         print("Digite um valor entre 1 a 5!")
 
+
 def converteParaInt(variavel):
     try:
         valor = int(variavel)
         return valor, True
     except ValueError:
-        print("Digite um valor entre 1 a 5!")
-        return  False
-
+        print("\nDigite um valor entre 1 a 5!\n")
+        return 0, False
 
 
 def realizaAvaliacao():
@@ -96,7 +100,7 @@ def realizaAvaliacao():
 
     print("\nAvalie o nivel de preocupancia dos seguintes tópicos com notas de 1 a 5.\n")
     while True:
-        a , i = converteParaInt(input("Desemprego e Desigualdade: "))
+        a, i = converteParaInt(input("Desemprego e Desigualdade: "))
         if verificaNota(a) and i:
             break
     while True:
@@ -115,7 +119,7 @@ def realizaAvaliacao():
         e, i = converteParaInt(input("Potencial desenvolvimento de IA superinteligente: "))
         if verificaNota(e) and i:
             break
-    avaliacao.avaliar(a,b,c,d,e)
+    avaliacao.avaliar(a, b, c, d, e)
 
     if uf in pesquisa:
         pesquisa[uf].append(avaliacao)
@@ -124,27 +128,53 @@ def realizaAvaliacao():
         pesquisa[uf].append(avaliacao)
 
 
-
-
-
 def relatorio():
-    pass
+    while True:
+
+        estado = selecionaUF()
+        if estado in pesquisa:
+            topico1 = 0
+            topico2 = 0
+            topico3 = 0
+            topico4 = 0
+            topico5 = 0
+            lista = pesquisa.get(estado)
+            contador = 0
+            for i in lista:
+                a, b, c, d, e = i.retornaAvaliacao()
+                topico1 += a
+                topico2 += b
+                topico3 += c
+                topico4 += d
+                topico5 += e
+                contador += 1
+
+            print("\nDesemprego e Desigualdade possui", (topico1 * 100 / (contador * 5)), "% de importância.")
+            print("Questões Éticas e Morais possui", (topico2 * 100 / (contador * 5)), "% de importância.")
+            print("Segurança cibernética e privacidade possui", (topico3 * 100 / (contador * 5)), "% de importância.")
+            print("Controle e regulamentação possui", (topico4 * 100 / (contador * 5)), "% de importância.")
+            print("Potencial desenvolvimento de IA superinteligente possui", (topico5 * 100 / (contador * 5)), "% de importância.\n")
+            break
+        else:
+            print("\nNão há pesquisa no estado selecionado no momento.\n")
+            break
 
 
 def menu():
     while True:
         escolha = int(input('''Menu
-    0- Finalizar o Programa
-    1- Realizar avaliação
-    2- Relatório
+    0 - Finalizar o Programa
+    1 - Realizar avaliação
+    2 - Relatório
     Escolha: '''))
         if escolha == 0:
             exit()
         elif escolha == 1:
             realizaAvaliacao()
         elif escolha == 2:
-            print(pesquisa)
             relatorio()
         else:
             print("Selecione uma opção valida!")
+
+
 menu()
