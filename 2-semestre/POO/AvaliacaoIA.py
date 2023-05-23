@@ -67,7 +67,7 @@ pesquisa = {}
 
 def selecionaUF():
     while True:
-        estado =  input("\nInforme a sigla do seu estado (Ex: RS, CE, SP...): ")
+        estado = input("\nInforme a sigla do seu estado (Ex: RS, CE, SP...): ")
         if estado.upper() in UF:
             return estado
         else:
@@ -153,7 +153,8 @@ def relatorio():
             print("Questões Éticas e Morais possui", (topico2 * 100 / (contador * 5)), "% de importância.")
             print("Segurança cibernética e privacidade possui", (topico3 * 100 / (contador * 5)), "% de importância.")
             print("Controle e regulamentação possui", (topico4 * 100 / (contador * 5)), "% de importância.")
-            print("Potencial desenvolvimento de IA superinteligente possui", (topico5 * 100 / (contador * 5)), "% de importância.\n")
+            print("Potencial desenvolvimento de IA superinteligente possui", (topico5 * 100 / (contador * 5)),
+                  "% de importância.\n")
             break
         else:
             print("\nNão há pesquisa no estado selecionado no momento.\n")
@@ -174,7 +175,7 @@ def menu():
         elif escolha == 2:
             relatorio()
         else:
-            print("Selecione uma opção valida!")
+            print("\nSelecione uma opção valida!\n")
 
 
 menu()
