@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2023-06-10T21:32:10.129Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/113.0" etag="PON5TbcXuiS5q3_6bK-b" version="21.1.8" type="github">
+<mxfile host="app.diagrams.net" modified="2023-06-11T13:49:01.198Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/113.0" etag="-DWh4A8BsHK3G0OFL8Xd" version="21.1.8" type="github">
   <diagram name="Página-1" id="AaqsLTTDHY7WDHXGIKEW">
-    <mxGraphModel dx="1609" dy="1950" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="2901" dy="1951" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -213,6 +213,25 @@
         </mxCell>
         <mxCell id="cB5H96jYszkSz2Kou0b2-85" value="UC008 - Registrar Pagamento" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="720" y="240" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="cB5H96jYszkSz2Kou0b2-93" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;dashed=1;endArrow=open;endFill=0;" edge="1" parent="1" source="cB5H96jYszkSz2Kou0b2-91" target="cB5H96jYszkSz2Kou0b2-34">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="cB5H96jYszkSz2Kou0b2-94" value="&amp;lt;&amp;lt;extend&amp;gt;&amp;gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="cB5H96jYszkSz2Kou0b2-93">
+          <mxGeometry x="-0.2276" y="2" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="cB5H96jYszkSz2Kou0b2-95" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;dashed=1;endArrow=open;endFill=0;" edge="1" parent="1" source="cB5H96jYszkSz2Kou0b2-91" target="cB5H96jYszkSz2Kou0b2-85">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="cB5H96jYszkSz2Kou0b2-96" value="&amp;lt;&amp;lt;include&amp;gt;&amp;gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="cB5H96jYszkSz2Kou0b2-95">
+          <mxGeometry x="0.325" y="4" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="cB5H96jYszkSz2Kou0b2-91" value="UC019 - Gera Multa" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="580" y="-40" width="120" height="80" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
