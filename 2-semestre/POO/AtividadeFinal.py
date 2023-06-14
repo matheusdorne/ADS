@@ -115,7 +115,10 @@ def localizar_profissional():
 
 def registrar_visita():
     visitante = input("Nome do visitante: ")
-    
+    if visitante in l_visitantes:
+       
+    profissional = input("Nome do profissional: ")
+    data_entrada = datetime.datetime.now()
 
 
 def relatorio_conferencia():
