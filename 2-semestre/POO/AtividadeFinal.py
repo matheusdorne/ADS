@@ -1,11 +1,15 @@
 import json
 import datetime
 
+
 class Profissional:
     def __init__(self, nome, especialidade, sala):
         self.__nome = nome
         self.__especialidade = especialidade
         self.__sala = sala
+
+    def __str__(self):
+        return f'Nome: {self.__nome}, Especialidade: {self.__especialidade}, Sala: {self.__sala}'
 
     def getNome(self):
         return self.__nome
@@ -57,7 +61,8 @@ MENU
 4- Registrar Visita 
 5- Relatório de Conferência 
 6- Gerar arquivo de Registros do dia 
-7- Ler arquivos profissionais / visitantes 
+7- Ler arquivos profissionais / visitantes  
+8- Teste print
 Escolha: '''))
         if escolha == 1:
             cadastrar_profissional()
@@ -73,6 +78,9 @@ Escolha: '''))
             gerar_arquivo()
         elif escolha == 7:
             ler_arquivo()
+        elif escolha == 8:
+            for i in l_profissionais:
+                print(i)
         else:
             print("Opção inválida")
 
@@ -83,7 +91,6 @@ def cadastrar_profissional():
     sala = input("Sala: ")
     profissional = Profissional(nome, especialidade, sala)
     l_profissionais.append(profissional)
-
 
 
 def cadastrar_visitante():
@@ -121,7 +128,6 @@ def registrar_visita():
 
 
 def relatorio_conferencia():
-
     pass
 
 
@@ -133,6 +139,6 @@ def ler_arquivo():
     pass
 
 
-l_profissionais = ()
-l_visitantes = ()
+l_profissionais = []
+l_visitantes = []
 menu()
