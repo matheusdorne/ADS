@@ -85,31 +85,49 @@ Escolha: '''))
             print("Opção inválida")
 
 
+def verificaSala():
+    while True:
+        sala = input("Sala: ")
+        if converteParaInt(sala):
+            break
+    return sala
+
+
+def converteParaInt(variavel):
+    try:
+        valor = int(variavel)
+        return True
+    except ValueError:
+        print("\nDigite uma valor válido!\n")
+        return False
+
+
 def cadastrar_profissional():
     nome = input("Nome: ")
     especialidade = input("Especialidade: ")
-    sala = input("Sala: ")
-    profissional = Profissional(nome, especialidade, sala)
+    sala = verificaSala()
+    profissional = Profissional(nome.upper(), especialidade.upper(), sala.upper())
     l_profissionais.append(profissional)
 
 
 def cadastrar_visitante():
     nome = input("Nome: ")
     documento = input("Documento: ")
-    visitante = Visitante(nome, documento)
+    visitante = Visitante(nome.upper(), documento)
     l_visitantes.append(visitante)
 
 
 def localizar_profissional():
-    escolha = int(input('Pesquisa por: '
+    escolha = int(input('\nPesquisa por: '
                         '\n1 - Nome'
                         '\n2 - Profissão'
                         '\nEscolha: '))
     if escolha == 1:
         nome = input("Nome: ")
         for i in l_profissionais:
-            if i.getNome == nome:
-                print(i.getNomenome, i.getEspecialidade, i.getSala)
+
+            if i.getNome == nome.upper():
+                print(i)
     elif escolha == 2:
         especialidade = input("Especialidade: ")
         for i in l_profissionais:
@@ -120,11 +138,36 @@ def localizar_profissional():
         print("Opção inválida")
 
 
+def listar_profissionais():
+    contador = 0
+    for i in l_profissionais:
+        print(contador, "-", i.getNome, i.getEspecialidade, i.getSala)
+        contador += 1
+    while True:
+        escolha = input("Escolha: ")
+        if converteParaInt(escolha) and 0 <= escolha <= contador:
+            return l_profissionais[escolha]
+        else:
+            print("Opção inválida")
+
+def listar_visitantes():
+    contador = 0
+    for i in l_visitantes:
+        print(contador, "-", i.getNome, i.getDocumento)
+        contador += 1
+    while True:
+        escolha = input("Escolha: ")
+        if converteParaInt(escolha) and 0 <= escolha <= contador:
+            return l_visitantes[escolha]
+        else:
+            print("Opção inválida")
+
+
 def registrar_visita():
-    visitante = input("Nome do visitante: ")
-    if visitante in l_visitantes:
-        profissional = input("Nome do profissional: ")
-        data_entrada = datetime.datetime.now()
+    profissional = listar_profissionais()
+    visitante = listar_visitantes()
+    data_entrada = datetime.datetime.now()
+
 
 
 def relatorio_conferencia():
@@ -141,4 +184,5 @@ def ler_arquivo():
 
 l_profissionais = []
 l_visitantes = []
+dict_visitas = {}
 menu()
