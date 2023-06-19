@@ -39,6 +39,9 @@ class Visita:
         self.__profissional = profissional
         self.__data_entrada = data_entrada
 
+    def __str__(self):
+        return f'Visitante: {self.__visitante}, Profissional: {self.__profissional}, Data Entrada: {self.__data_entrada}'
+
     def getVisitante(self):
         return self.__visitante
 
@@ -180,8 +183,14 @@ def listar_visitantes():
 def registrar_visita():
     profissional = listar_profissionais()
     visitante = listar_visitantes()
-    data_entrada = datetime.datetime.now()
+    data_entrada = datetime.now().strftime('%d/%m/%Y %H:%M:%S')
 
+    if visitante in dict_visitas:
+        dict_visitas[visitante] = {"nome_profissional": profissional.getNome(), "data_entrada": data_entrada, "Sala:": profissional.getSala()}
+    else:
+        dict_visitas[visitante] = {}
+        dict_visitas[visitante] = {"nome_profissional": profissional.getNome(), "data_entrada": data_entrada, "Sala:": profissional.getSala()}
+    print(dict_visitas)
 
 def relatorio_conferencia():
     pass
