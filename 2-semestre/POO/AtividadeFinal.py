@@ -9,7 +9,7 @@ class Profissional:
         self.__sala = sala
 
     def __str__(self):
-        return f'Nome: {self.__nome}, Especialidade: {self.__especialidade}, Sala: {self.__sala}'
+        return f'\nNome: {self.__nome}, Especialidade: {self.__especialidade}, Sala: {self.__sala}'
 
     def getNome(self):
         return self.__nome
