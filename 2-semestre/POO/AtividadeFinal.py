@@ -55,7 +55,7 @@ class Visita:
 def menu():
     while True:
         escolha = int(input('''
-        ====================== 
+====================== 
 MENU 
 ====================== 
 1- Cadastrar Profissional 
@@ -65,7 +65,6 @@ MENU
 5- Relatório de Conferência 
 6- Gerar arquivo de Registros do dia 
 7- Ler arquivos profissionais / visitantes  
-8- Teste print
 Escolha: '''))
         if escolha == 1:
             cadastrar_profissional()
@@ -81,9 +80,7 @@ Escolha: '''))
             gerar_arquivo_json()
         elif escolha == 7:
             ler_arquivo()
-        elif escolha == 8:
-            for i in l_profissionais:
-                print(i)
+
         else:
             print("Opção inválida")
 
@@ -115,21 +112,26 @@ def converteParaInt(variavel):
 
 
 def cadastrar_profissional():
+    print("\nCadastro de Profissional\n")
     nome = input("Nome: ")
     especialidade = input("Especialidade: ")
     sala = verificaSala()
     profissional = Profissional(nome.upper(), especialidade.upper(), sala.upper())
     l_profissionais.append(profissional)
+    print("Profissional cadastrado com sucesso!")
 
 
 def cadastrar_visitante():
+    print("\nCadastro de Visitante\n")
     nome = input("Nome: ")
     documento = input("Documento: ")
     visitante = Visitante(nome.upper(), documento)
     l_visitantes.append(visitante)
+    print("Visitante cadastrado com sucesso!")
 
 
 def localizar_profissional():
+    print("\nLocalizar Profissional\n")
     escolha = int(input('\nPesquisa por: '
                         '\n1 - Nome'
                         '\n2 - Especialidade'
@@ -151,6 +153,7 @@ def localizar_profissional():
 
 
 def listar_profissionais():
+    print("\nLista de Profissionais\n")
     contador = 0
     for i in l_profissionais:
         print(contador, "-", i.getNome(), i.getEspecialidade(), i.getSala())
@@ -168,6 +171,7 @@ def listar_profissionais():
 
 
 def listar_visitantes():
+    print("\nLista de Visitantes\n")
     contador = 0
     for i in l_visitantes:
         print(contador, "-", i.retornaNome(), i.getDocumento())
@@ -185,6 +189,7 @@ def listar_visitantes():
 
 
 def registrar_visita():
+    print("\nRegistrar Visita\n")
     profissional = listar_profissionais()
     visitante = listar_visitantes()
     data_entrada = datetime.datetime.now().strftime("%d/%m/%Y %H:%M:%S")
@@ -196,10 +201,11 @@ def registrar_visita():
         dict_visitas[visitante] = []
         dict_visitas[visitante].append({"nome_profissional": profissional.getNome(), "data_entrada": data_entrada,
                                         "Sala:": profissional.getSala()})
-    print(dict_visitas)
+    print("Visita registrada com sucesso!")
 
 
 def relatorio_conferencia():
+    print("\nRelatório de Conferência\n")
     profissional = listar_profissionais()
     for i in dict_visitas:
         for j in dict_visitas[i]:
@@ -208,24 +214,51 @@ def relatorio_conferencia():
 
 
 def gerar_arquivo_json():
-    data_atual = datetime.datetime.now().strftime("%Y-%m-%d")
-    nome_arquivo = f"registros_{data_atual}.json"
+    registros = {}
+    for visitante, visitas in dict_visitas.items():
+        registros[visitante.getDocumento()] = []
+        for visita in visitas:
+            registro = {
+                "nome_profissional": visita["nome_profissional"],
+                "hora_entrada": visita["data_entrada"],
+                "sala": visita["Sala:"]
+            }
+            registros[visitante.getDocumento()].append(registro)
 
-    with open(nome_arquivo, "w") as arquivo:
-        json.dump(dict_visitas, arquivo)
+    with open("registros_do_dia.json", "w") as arquivo:
+        json.dump(registros, arquivo, indent=4)
 
-    print("Arquivo de registros do dia gerado com sucesso!")
-
+    print("Arquivo gerado com sucesso!")
 
 
 def ler_arquivo():
-    pass
+    try:
+        with open("profissionais.txt", "r") as arquivo:
+            linhas = arquivo.readlines()
+
+        for linha in linhas:
+            nome, especialidade, sala = linha.strip().split(":")
+            profissional = Profissional(nome, especialidade, sala)
+            l_profissionais.append(profissional)
+
+        print("Arquivo 'profissionais.txt' lido com sucesso!")
+
+        with open("visitantes.txt", "r") as arquivo:
+            linhas = arquivo.readlines()
+
+        for linha in linhas:
+            nome, documento = linha.strip().split(":")
+            visitante = Visitante(nome, documento)
+            l_visitantes.append(visitante)
+
+        print("Arquivo 'visitantes.txt' lido com sucesso!")
+
+    except FileNotFoundError:
+        print("Arquivos de dados não encontrados.")
 
 
 l_profissionais = []
-l_profissionais.append(Profissional("MATHEUS", "ODONTOLOGIA", "1"))
 l_visitantes = []
-l_visitantes.append(Visitante("JOAO", "123456789"))
 dict_visitas = {}
-print(l_profissionais[0])
+dict_visitas_txt = {}
 menu()
