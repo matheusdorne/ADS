@@ -203,7 +203,13 @@ def registrar_visita():
                                         "Sala:": profissional.getSala()})
     print("Visita registrada com sucesso!")
 
-
+def quantidade_visitas():
+    print("\nQuantidade de Visitas\n")
+    visitante = listar_visitantes()
+    contador = 0
+    for i in dict_visitas[visitante]:
+        contador += 1
+    print("O visitante", visitante.retornaNome(), "fez", contador, "visitas")
 def relatorio_conferencia():
     print("\nRelatório de Conferência\n")
     profissional = listar_profissionais()
@@ -261,4 +267,5 @@ l_profissionais = []
 l_visitantes = []
 dict_visitas = {}
 dict_visitas_txt = {}
+
 menu()
